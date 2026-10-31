@@ -1,0 +1,235 @@
+@import "@fontsource/ibm-plex-sans/latin-400.css";
+@import "@fontsource/ibm-plex-sans/latin-500.css";
+@import "@fontsource/ibm-plex-sans/latin-600.css";
+@import "@fontsource/ibm-plex-sans/cyrillic-400.css";
+@import "@fontsource/ibm-plex-sans/cyrillic-500.css";
+@import "@fontsource/ibm-plex-sans/cyrillic-600.css";
+@import "@fontsource/ibm-plex-sans/cyrillic-ext-400.css";
+@import "@fontsource/ibm-plex-sans/cyrillic-ext-500.css";
+@import "@fontsource/ibm-plex-sans/cyrillic-ext-600.css";
+
+/* Asmart-Triumf Qurilish — dizayn tizimi
+   Beton rangidagi kanvas, po'lat-ko'k yon panel, oq jadval yuzalari, bitta ko'k urg'u.
+   Xotirjam: rang faqat holat va asosiy harakat uchun. */
+:root{
+  --bg:#eceeef; --surface:#fff; --surface2:#f6f7f8;
+  --ink:#18212b; --ink2:#5a6573; --ink3:#8b95a1;
+  --line:#dce0e4; --line2:#eaedf0;
+  --rail:#16212d; --rail-ink:#b9c4cf; --rail-line:#243445; --rail-on:rgba(255,255,255,.08);
+  --accent:#1e56b3; --accent-hover:#184793; --accent-soft:#e8eff9; --accent-ink:#fff;
+  --good:#1d7a4c; --good-soft:#e2f2e9; --warn:#9a5a00; --warn-soft:#fbefd8; --bad:#b03a2e; --bad-soft:#f8e4e1;
+  --c1:#1e56b3; --c2:#c08a2b; --c3:#5f8c86;
+  --shade:rgba(22,33,45,.46);
+  --r-s:6px; --r-m:8px; --r-l:12px;
+  --f:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --rail-w:248px;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.5 var(--f);font-feature-settings:"tnum" 1;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--f);margin:0;text-wrap:balance}
+a{color:inherit}
+p{margin:0}
+::selection{background:var(--accent-soft)}
+
+/* ---------- qobiq ---------- */
+.app{display:grid;grid-template-columns:var(--rail-w) minmax(0,1fr);min-height:100vh}
+.rail{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;background:var(--rail);color:var(--rail-ink);padding:22px 12px 16px;overflow-y:auto}
+.brand{display:flex;align-items:center;gap:11px;padding:0 8px 22px}
+.brand svg{flex:none;width:32px;height:32px;border-radius:5px}
+.brand b{display:block;font-size:15px;font-weight:600;line-height:1.2;color:#fff;letter-spacing:-.005em}
+.brand span{display:none}
+.nav{display:flex;flex-direction:column;gap:1px}
+.nav a{display:flex;justify-content:space-between;align-items:center;gap:8px;height:36px;padding:0 10px;border-radius:var(--r-s);text-decoration:none;color:var(--rail-ink);font-weight:450;font-size:14px}
+.nav a:hover{background:var(--rail-on);color:#fff}
+.nav a.on{background:var(--rail-on);color:#fff;font-weight:500;box-shadow:inset 3px 0 0 #6fa6f5}
+.nav .cnt{font-size:11px;font-weight:600;background:var(--bad);color:#fff;min-width:19px;height:19px;line-height:19px;text-align:center;border-radius:10px;padding:0 6px}
+.nav .cnt.w{background:#b8791a}
+.who{margin-top:auto;padding:14px 8px 4px;border-top:1px solid var(--rail-line);display:flex;flex-direction:column;gap:1px}
+.who b{color:#fff;font-weight:500;font-size:13.5px}
+.who span{font-size:12.5px;color:#8798a9}
+.who div{display:flex;gap:4px;margin:8px 0 0 -8px}
+.who .btn{color:var(--rail-ink);border-color:transparent;background:transparent}
+.who .btn:hover{background:var(--rail-on);color:#fff}
+.sync{display:flex;align-items:center;gap:7px;padding:10px 8px 0;font-size:12px;color:#8798a9}
+.sync i{width:7px;height:7px;border-radius:50%;background:#4fb783;flex:none}
+.sync.bad i{background:#e0685b}.sync.busy i{background:#d9a24a}
+.main{min-width:0;padding:30px clamp(18px,3.4vw,44px) 56px;max-width:1360px;width:100%}
+
+.page-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:14px 20px;margin-bottom:24px}
+.page-head h1{font-size:26px;font-weight:600;line-height:1.15;letter-spacing:-.012em}
+.eyebrow{order:2;margin-top:4px;font-size:13.5px;color:var(--ink2)}
+.page-head>div:first-child{display:flex;flex-direction:column}
+.page-head .eyebrow{order:2}
+.page-head h1{order:1}
+.actions{display:flex;flex-wrap:wrap;gap:8px}
+
+/* ---------- tugmalar va maydonlar ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;height:34px;padding:0 14px;font:500 13.5px/1 var(--f);color:var(--ink);background:var(--surface);border:1px solid #cbd2d9;border-radius:var(--r-s);cursor:pointer;white-space:nowrap;transition:background .12s,border-color .12s}
+.btn:hover{background:var(--surface2);border-color:#b9c2cb}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn.primary:hover{background:var(--accent-hover);border-color:var(--accent-hover)}
+.btn.sm{height:28px;padding:0 10px;font-size:12.5px}
+.btn.ghost{background:transparent;border-color:transparent;color:var(--ink2)}
+.btn.ghost:hover{background:#e9edf0;color:var(--ink)}
+.btn.danger{color:var(--bad)}
+.btn.ghost.danger:hover{background:var(--bad-soft);color:var(--bad)}
+.btn:focus-visible,.nav a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+select,input,textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px solid #c6cdd4;border-radius:var(--r-s);height:36px;padding:0 11px;width:100%}
+select{padding-right:6px}
+input[type=date]{padding-right:8px}
+input:hover,select:hover{border-color:#a9b3bd}
+input:focus,select:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+label{display:block;font-size:12.5px;font-weight:500;color:var(--ink2);margin-bottom:5px}
+.filters{display:flex;flex-wrap:wrap;gap:12px 14px;margin-bottom:18px;align-items:end}
+.filters select,.filters input{width:auto;min-width:176px;max-width:100%}
+.hint{font-size:13px;color:var(--ink2)}
+.err{color:var(--bad);min-height:1.4em;margin-top:10px;font-weight:500;font-size:13px}
+
+/* ---------- ko'rsatkichlar ---------- */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(176px,1fr));background:var(--surface);border:1px solid var(--line);border-radius:var(--r-m);overflow:hidden;margin-bottom:28px}
+.stat{padding:16px 18px 15px;min-width:0;box-shadow:-1px -1px 0 0 var(--line)}
+.stat small{display:block;font-size:12.5px;color:var(--ink2);line-height:1.3}
+.stat b{display:block;font-size:22px;font-weight:600;line-height:1.25;letter-spacing:-.01em;margin-top:6px;overflow-wrap:anywhere}
+.stat em{display:block;font-style:normal;font-size:12.5px;color:var(--ink3);margin-top:1px}
+.stat.key{background:var(--accent-soft)}
+.stat.key b{color:var(--accent)}
+
+.cols{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,2fr);gap:28px;margin-bottom:28px}
+.block{margin-bottom:30px;min-width:0}
+.block>h2{display:flex;flex-wrap:wrap;gap:4px 14px;align-items:baseline;justify-content:space-between;font-size:15px;font-weight:600;margin-bottom:10px}
+.block>h2 small{font:400 13px var(--f);color:var(--ink2)}
+.block>h2 small .btn{vertical-align:middle}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-m);padding:18px}
+.panel b{font-weight:600}
+.statement-head{display:flex;flex-wrap:wrap;gap:4px 20px;align-items:baseline;margin-bottom:16px}
+.statement-head h2{font-size:20px;font-weight:600}
+
+/* ---------- jadvallar ---------- */
+.tw{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-m)}
+table{border-collapse:collapse;width:100%}
+th{font-size:12.5px;font-weight:500;color:var(--ink2);text-align:left;padding:10px 14px;background:var(--surface2);border-bottom:1px solid var(--line);white-space:nowrap}
+td{padding:11px 14px;border-bottom:1px solid var(--line2);vertical-align:middle}
+td.n,th.n{font-variant-numeric:tabular-nums}
+tbody tr:last-child td{border-bottom:0}
+tbody tr:hover{background:#f8fafb}
+th.n,td.n{text-align:right;white-space:nowrap}
+th.c,td.c{text-align:center}
+td.emp{text-align:center;color:var(--ink3);padding:30px 14px}
+tfoot td{font-weight:600;background:var(--surface2);border-top:1px solid var(--line);border-bottom:0}
+.nm b{display:block;font-weight:500}
+.nm span{display:block;font-size:12.5px;color:var(--ink3)}
+.rowacts{display:flex;gap:2px;justify-content:flex-end;flex-wrap:nowrap}
+.pill{display:inline-block;padding:1px 9px;font-size:12px;font-weight:500;line-height:19px;border-radius:99px;white-space:nowrap;background:var(--line2);color:var(--ink2)}
+.pill.ok{background:var(--good-soft);color:var(--good)}.pill.warn{background:var(--warn-soft);color:var(--warn)}
+.pill.bad{background:var(--bad-soft);color:var(--bad)}.pill.info{background:var(--accent-soft);color:var(--accent)}
+.pin{width:124px;height:30px;padding:0 8px}
+
+/* ---------- tayyorlik: g'isht qatori ---------- */
+.track,.fill{-webkit-mask:repeating-linear-gradient(90deg,#000 0 7px,transparent 7px 9px);mask:repeating-linear-gradient(90deg,#000 0 7px,transparent 7px 9px)}
+.track{position:relative;height:10px;background:#dfe3e7;min-width:90px;border-radius:2px}
+.fill{height:100%;background:var(--accent);border-radius:2px}
+.fill.bad{background:var(--bad)}.fill.ok{background:var(--good)}
+.bars{display:flex;flex-direction:column;gap:18px}
+.bar-top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:2px 12px;margin-bottom:7px}
+.bar-top b{font-weight:500}
+.bar-top span{color:var(--ink2);font-size:13px}
+.legend{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:12.5px;color:var(--ink2);margin-bottom:12px}
+.legend i{display:inline-block;width:10px;height:10px;margin-right:7px;vertical-align:-1px;border-radius:2px}
+.stack{display:flex;height:12px;background:#dfe3e7;border-radius:2px;overflow:hidden}
+.stack i{display:block;height:100%}
+.alerts{display:flex;flex-direction:column}
+.alert{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--line2);text-decoration:none}
+.alert:last-child{border-bottom:0}
+.alert .dot{flex:none;width:8px;height:8px;margin-top:7px;border-radius:50%;background:#c9892c}.alert .dot.b{background:var(--bad)}
+.alert b{display:block;font-weight:500}.alert span{font-size:13px;color:var(--ink2)}
+.chart{width:100%;height:auto;display:block}
+.chart text{font:11px var(--f);fill:var(--ink3)}
+.chart .gl{stroke:var(--line2);stroke-width:1}
+.chart .bi{fill:var(--good)}.chart .bo{fill:var(--accent)}
+.empty{padding:34px 18px;text-align:center}
+.empty p{margin:0 0 14px;color:var(--ink2)}
+
+/* ---------- oyna ---------- */
+.ov{position:fixed;inset:0;background:var(--shade);display:grid;place-items:start center;padding:max(20px,env(safe-area-inset-top,0px)) 16px 24px;z-index:50;overflow:auto}
+.sheet{background:var(--surface);width:min(600px,100%);padding:26px;border-radius:var(--r-l);margin-top:5vh;box-shadow:0 1px 2px rgba(22,33,45,.10),0 18px 48px rgba(22,33,45,.26)}
+.sheet.small{width:min(440px,100%)}
+.sheet h3{font-size:18px;font-weight:600;margin-bottom:18px;letter-spacing:-.005em}
+.sheet p{line-height:1.55}
+.fg{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.fg .full{grid-column:1/-1}
+.fg label{margin-bottom:5px}
+.fg .hint{margin-top:5px;font-size:12.5px;color:var(--ink3)}
+.acts{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap;margin-top:22px}
+
+/* ---------- kirish ---------- */
+.login{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(360px,.85fr);min-height:100vh;background:var(--surface)}
+.login-art{position:relative;background-color:var(--rail);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='52'%3E%3Cg fill='none' stroke='%23ffffff' stroke-opacity='.075' stroke-width='2'%3E%3Cpath d='M0 1h120M0 27h120M0 1v26M60 1v26M30 27v25M90 27v25'/%3E%3C/g%3E%3C/svg%3E");display:flex;align-items:flex-end;padding:56px;overflow:hidden}
+.login-art::after{content:"";position:absolute;inset:0;background:linear-gradient(120deg,rgba(22,33,45,0) 30%,rgba(22,33,45,.92) 100%),radial-gradient(60% 50% at 18% 85%,rgba(22,33,45,.85),transparent)}
+.login-art b{position:relative;z-index:1;color:#fff;font-size:clamp(32px,3.6vw,48px);font-weight:600;line-height:1.08;letter-spacing:-.02em;max-width:11ch}
+.login-form-wrap{display:flex;align-items:center;justify-content:center;padding:32px}
+.login-card{width:min(360px,100%);display:flex;flex-direction:column}
+.login-card h1{font-size:22px;font-weight:600;letter-spacing:-.01em;margin-bottom:24px}
+.login-card label{margin-top:16px}
+.login-card .err{margin-top:12px}
+.login-brand{display:none;font-weight:600;color:var(--ink2);margin-bottom:6px}
+.login-card .btn{height:40px;margin-top:6px;font-size:14px}
+
+/* ---------- hujjat ko'rinishi (shartnoma, hisobot) ---------- */
+.ctsheet{width:min(840px,100%)}
+.rpsheet{width:min(1120px,100%)}
+.ct-bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:16px}
+.ct-doc{font-family:"Times New Roman",Times,serif;font-size:15px;line-height:1.45;color:#111;background:#fff;padding:26px 30px;border:1px solid var(--line);border-radius:var(--r-s)}
+.ct-title{text-align:center;font-weight:700;font-size:18px;margin:0 0 14px}
+.ct-dl{display:flex;justify-content:space-between;margin:0 0 8px}
+.ct-p{margin:0 0 6px;text-align:justify}.ct-p.first{text-indent:2em}
+.ct-h{font-weight:700;margin:12px 0 4px}
+.ct-li{margin:0 0 3px 1.4em;text-indent:-.8em;text-align:justify}
+.ct-req{width:100%;border-collapse:collapse;margin-top:12px;table-layout:fixed}
+.ct-req td{border:1px solid #888;padding:8px 10px;vertical-align:top;font-size:13.5px;word-break:break-word}
+.rp-doc{font-size:13px;font-family:var(--f)}
+.rp-t{font-weight:600;font-size:15px;text-align:center;margin:0 0 4px}
+.rp-l{margin:0 0 3px;text-align:center;color:var(--ink2)}
+.rp{width:100%;border-collapse:collapse;margin:12px 0}
+.rp th,.rp td{border:1px solid var(--line);padding:6px 8px;font-size:12.5px;vertical-align:top}
+.rp th{background:var(--surface2);text-align:center;font-weight:500;color:var(--ink)}
+.rp td.n{text-align:right;font-variant-numeric:tabular-nums}
+.rp tr.b td{font-weight:600}
+.rp tr.g td{background:var(--surface2);font-weight:500}
+.rp-sign p{margin:0 0 8px;font-size:12.5px}
+.rpsheet .rp-doc{color:#111}
+.rpsheet .rp th,.rpsheet .rp td{border-color:#9aa3ab}
+.rpsheet .rp th{background:#eef0f2}
+
+@media print{
+  body>*:not(#layer){display:none!important}
+  #layer .ov{position:static;background:none;padding:0;display:block}
+  .sheet.ctsheet{box-shadow:none;border-radius:0;width:auto;margin:0;padding:0;background:none}
+  .noprint{display:none!important}
+  .ct-doc{border:0;padding:0;font-size:12pt}
+}
+
+/* ---------- moslashuvchan ---------- */
+@media (max-width:1000px){.cols{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:900px){
+  .login{grid-template-columns:minmax(0,1fr)}
+  .login-art{display:none}
+  .login-brand{display:block}
+  .app{grid-template-columns:minmax(0,1fr)}
+  .rail{position:static;height:auto;flex-direction:row;flex-wrap:wrap;align-items:center;padding:10px 12px 0;overflow:visible}
+  .brand{padding:0 8px 10px}
+  .who{margin:0 0 0 auto;padding:0 0 8px;border:0;flex-direction:row;align-items:center;gap:6px}
+  .who span{display:none}
+  .who div{margin:0}
+  .sync{order:3;padding:0 8px 8px}
+  .nav{order:4;flex-direction:row;overflow-x:auto;width:100%;gap:2px;padding-bottom:10px;scrollbar-width:none}
+  .nav a{flex:none;height:34px}
+  .main{padding:20px 16px 48px}
+  .page-head h1{font-size:23px}
+}
+@media (max-width:560px){.fg{grid-template-columns:minmax(0,1fr)}.sheet{padding:20px;margin-top:2vh}}
+@media (prefers-reduced-motion:no-preference){.fill{transition:width .35s ease}}
+
+.stats.s6{grid-template-columns:repeat(3,1fr)}
+@media(max-width:560px){.stats,.stats.s6{grid-template-columns:repeat(2,1fr)}}

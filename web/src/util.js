@@ -1,0 +1,25 @@
+export const $=(s,el=document)=>el.querySelector(s);
+export const esc=s=>String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+export const sum=(a,f)=>a.reduce((s,x)=>s+f(x),0);
+export const uid=()=>Math.random().toString(36).slice(2,9)+Date.now().toString(36).slice(-3);
+export const nf=new Intl.NumberFormat("ru-RU");
+export const money=n=>nf.format(Math.round(n||0));
+export const qn=n=>nf.format(Math.round((n||0)*100)/100);
+export const short=n=>{const a=Math.abs(n);
+  if(a>=1e9)return (n/1e9).toFixed(2).replace(/\.?0+$/,"")+" млрд";
+  if(a>=1e6)return (n/1e6).toFixed(1).replace(/\.?0+$/,"")+" млн";
+  if(a>=1e3)return nf.format(Math.round(n/1e3))+" минг";
+  return money(n)};
+export const pc=n=>Math.round(n||0)+"%";
+export const MONTHS=["Янв","Фев","Мар","Апр","Май","Июн","Июл","Авг","Сен","Окт","Ноя","Дек"];
+export const TODAY=new Date().toISOString().slice(0,10);
+export const fd=s=>s?s.slice(8,10)+"."+s.slice(5,7)+"."+s.slice(0,4):"—";
+export const monthLabel=m=>MONTHS[+m.slice(5)-1]+" "+m.slice(0,4);
+export const daysTo=d=>Math.round((new Date(d)-new Date(TODAY))/864e5);
+export const byId=(a,id)=>a.find(x=>x.id===id);
+export const ST={active:["Жараёнда","info"],paused:["Тўхтатилган","warn"],done:["Тугалланган","ok"]};
+export const CATS_OUT={material:"Материал",supplier:"Етказиб берувчига тўлов",advance:"Бригадирга аванс",wage:"Бригадирга иш ҳақи",equip:"Техника ижараси",transport:"Транспорт",sub:"Пудратчи",other:"Бошқа"};
+export const CATS_IN={client:"Мижоздан тўлов",other:"Бошқа кирим"};
+export const KEYS=["objects","works","brigades","plan","logs","materials","moves","suppliers","contracts","clients","cash","debts"];
+export const DEFAULT_WORKS=[["Шпатлевка","м²"],["Ротбанд","м²"],["Гипсокартон","м²"],["Фасад","м²"],["Эмульсия","м²"],["Травертин","м²"],["Кафел","м²"]];
+

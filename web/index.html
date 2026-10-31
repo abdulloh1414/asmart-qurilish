@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="uz-Cyrl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Асмарт-Триумф Қурилиш</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+<section class="login" id="login" hidden>
+  <div class="login-art" aria-hidden="true"><b>Асмарт-Триумф Қурилиш</b></div>
+  <div class="login-form-wrap">
+    <form class="login-card" id="login-form" autocomplete="on">
+      <p class="login-brand">Асмарт-Триумф Қурилиш</p>
+      <h1>Тизимга кириш</h1>
+      <label for="lg-login">Логин</label>
+      <input id="lg-login" name="login" autocomplete="username" autocapitalize="none" spellcheck="false" required>
+      <label for="lg-pass">Парол</label>
+      <input id="lg-pass" name="password" type="password" autocomplete="current-password" required>
+      <p class="err" id="lg-err" role="alert"></p>
+      <button class="btn primary" type="submit">Кириш</button>
+    </form>
+  </div>
+</section>
+<div class="app" id="app" hidden>
+  <aside class="rail">
+    <div class="brand">
+      <svg viewBox="0 0 34 34" aria-hidden="true"><rect width="34" height="34" fill="var(--accent)"/><g fill="var(--accent-ink)"><rect x="5" y="6" width="11" height="6"/><rect x="18" y="6" width="11" height="6"/><rect x="5" y="14" width="5" height="6"/><rect x="12" y="14" width="11" height="6"/><rect x="25" y="14" width="4" height="6"/><rect x="5" y="22" width="11" height="6"/><rect x="18" y="22" width="11" height="6"/></g></svg>
+      <div><b>Асмарт-Триумф Қурилиш</b></div>
+    </div>
+    <nav class="nav" id="nav" aria-label="Бўлимлар"></nav>
+    <div class="who" id="who"></div>
+    <div class="sync busy" id="sync"><i></i><span>Юкланмоқда…</span></div>
+  </aside>
+  <div class="main">
+    <header class="page-head" id="head"></header>
+    <main id="view"></main>
+  </div>
+</div>
+<div id="layer"></div>
+<input type="file" id="xl" accept=".xlsx,.xls,.csv" hidden>
+<script type="module" src="/src/main.js"></script>
+</body>
+</html>

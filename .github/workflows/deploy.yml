@@ -1,0 +1,22 @@
+name: Deploy
+on:
+  workflow_run:
+    workflows: [CI]
+    branches: [main]
+    types: [completed]
+jobs:
+  deploy:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Serverga joylash
+        env:
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+          SSH_USER: ${{ secrets.SSH_USER }}
+          SSH_KEY: ${{ secrets.SSH_KEY }}
+          APP_DIR: ${{ secrets.APP_DIR }}
+        run: |
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$SSH_KEY" > ~/.ssh/id_deploy && chmod 600 ~/.ssh/id_deploy
+          ssh-keyscan -H "$SSH_HOST" >> ~/.ssh/known_hosts
+          ssh -i ~/.ssh/id_deploy "$SSH_USER@$SSH_HOST" "cd ${APP_DIR:-/opt/asmart-triumf} && git pull --ff-only && docker compose up -d --build && docker image prune -f"
