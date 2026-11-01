@@ -5,7 +5,7 @@ TRIUMF ENGINEERING uchun qurilish boshqaruvi dasturi: obyektlar, ish rejasi, bri
 ## Tuzilishi
 - `server/` — Fastify + TypeScript + PostgreSQL (`pg`), sessiya orqali kirish, rollar
 - `web/` — Vite + vanilla JS
-- `deploy/` — Caddy sozlamasi, `docker-compose.yml` — db, app, caddy, kunlik zaxira
+- `deploy/` — `nginx-triumf.conf` (nginx uchun), `docker-compose.yml` — db, app, kunlik zaxira
 - `e2e/` — Playwright tekshiruvlari
 
 ## Rollar
@@ -20,7 +20,8 @@ Testlar: `cd server && npm test`.
 
 ## Serverga joylash
 1. Subdomen A yozuvini server IP'siga yo'naltiring.
-2. `cp .env.example .env` va `DOMAIN`, `POSTGRES_PASSWORD`, `ADMIN_*` ni to'ldiring (kuchli parol!).
-3. `docker compose up -d --build` — Caddy HTTPS sertifikatni o'zi oladi.
-4. Zaxira nusxalar `./backups` ichida (14 kun).
-5. Avtomatik joylash: GitHub Secrets — `SSH_HOST`, `SSH_USER`, `SSH_KEY`, `APP_DIR`.
+2. `cp .env.example .env` va `POSTGRES_PASSWORD`, `ADMIN_*` ni to'ldiring (kuchli parol!).
+3. `docker compose up -d --build` — ilova `127.0.0.1:3010` da ishlaydi.
+4. `deploy/nginx-triumf.conf` ni `/etc/nginx/conf.d/` ga qo'ying, `nginx -t && systemctl reload nginx`, so'ng `certbot --nginx -d <subdomen>`.
+5. Zaxira nusxalar `./backups` ichida (14 kun).
+6. Avtomatik joylash: GitHub Secrets — `SSH_HOST`, `SSH_USER`, `SSH_KEY`, `APP_DIR`.

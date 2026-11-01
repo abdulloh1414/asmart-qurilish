@@ -17,6 +17,7 @@ services:
   app:
     build: .
     restart: unless-stopped
+    ports: ["127.0.0.1:3010:3000"]
     depends_on:
       db:
         condition: service_healthy
@@ -26,18 +27,6 @@ services:
       ADMIN_LOGIN: ${ADMIN_LOGIN:-}
       ADMIN_PASSWORD: ${ADMIN_PASSWORD:-}
       ADMIN_NAME: ${ADMIN_NAME:-Direktor}
-
-  caddy:
-    image: caddy:2-alpine
-    restart: unless-stopped
-    depends_on: [app]
-    ports: ["80:80", "443:443"]
-    environment:
-      DOMAIN: ${DOMAIN:?DOMAIN kerak}
-    volumes:
-      - ./deploy/Caddyfile:/etc/caddy/Caddyfile:ro
-      - caddydata:/data
-      - caddyconfig:/config
 
   backup:
     image: postgres:16-alpine
@@ -61,5 +50,3 @@ services:
 
 volumes:
   dbdata:
-  caddydata:
-  caddyconfig:
