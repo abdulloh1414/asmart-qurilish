@@ -35,7 +35,7 @@ VIEWS.objects=()=>{
   const rows=S.objects.map(o=>{const b=breakdown(o.id),pr=objProgress(o.id),st=ST[o.status]||ST.active;
     return tr([`<div class="nm"><b>${esc(o.name)}</b><span>${esc(o.client||"")}${o.client&&o.address?" · ":""}${esc(o.address||"")}</span><span>${fd(o.start)} — ${fd(o.end)}</span></div>`,pill(st[0],st[1]),`<div style="min-width:110px">${bar(pr||0,pr>=100?"ok":"")}<span class="hint">${pr==null?"режа йўқ":pc(pr)}</span></div>`,money(b.labour),money(b.mat),money(b.other),`<b>${money(b.cost)}</b>`+(o.budget>0?`<br><span class="hint">${pc(b.cost/o.budget*100)} шартномадан</span>`:""),money(b.income),rowActs("objects",o.id,`<button class="btn sm ghost" data-act="plan-of" data-id="${o.id}">Режа</button>`)],[3,4,5,6,7])});
   return {eyebrow:`${S.objects.length} та объект`,title:"Объектлар",actions:btn("+ Янги объект","new",'data-t="objects"',"primary"),
-    body:table(["Объект","Ҳолати","Тайёрлик","Бригада ҳақи","Материал","Бошқа","Жами сарф","Мижоз тўловлари",""],rows,[3,4,5,6,7])+`<p class="hint" style="margin-top:10px">Бригада ҳақи бажарилган иш ҳажмидан, материал омбордан чиқимдан ҳисобланади. Суммалар сўмда.</p>`};
+    body:table(["Объект","Ҳолати","Тайёрлик","Бригада ҳақи","Материал","Бошқа","Жами сарф","Мижоз тўловлари",""],rows,[3,4,5,6,7])+``};
 };
 VIEWS.plan=()=>{
   if(!S.objects.length)return {eyebrow:"Ҳажм режаси ва бажарилиши",title:"Иш режаси",actions:"",body:noObjects()};
@@ -117,7 +117,7 @@ VIEWS.payroll=()=>{
   return {eyebrow:`Давр: ${esc(period)}`,title:"Иш ҳақи ҳисоби",actions:btn("Ведомость","act-print",'data-id="pay"')+btn("Бригадирга аванс","advance")+btn("Бригадирга иш ҳақи","wage","","primary"),
   body:filters+`<div class="stats">${stat("Ҳисобланган",short(T.e),"ҳажм бўйича")}${stat("Бригадирларга аванс","−"+short(T.a),"")}${stat("Тўланган","−"+short(T.p),"")}${stat("Тўлашга қолган",short(T.e-T.a-T.p),"сўм",true)}</div>
   ${table(["Бригада","Ҳажм","Ҳисобланган, сўм","Аванс, сўм","Тўланган, сўм","Тўлашга, сўм",""],rows,[1,2,3,4,5])}
-  <p class="hint" style="margin-top:10px">Иш ҳақи = бажарилган ҳажм × ставка. Аванс ва иш ҳақи фақат бригадирга берилади, аванслар ва аввалги тўловлар ҳисобдан чегирилади. Тўлиқ ҳисоб учун «Варақ» тугмасини босинг.</p>`};
+`};
 };
 VIEWS.stock=()=>{
   const low=S.materials.filter(m=>m.min>0&&stockOf(m.id)<=m.min).length;

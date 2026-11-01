@@ -122,6 +122,6 @@ VIEWS.suppliers=()=>{
   return {eyebrow:"Мол етказиб берувчилар билан қарзга ишлаш",title:"Етказиб берувчилар",actions:btn("+ Етказиб берувчи","new",'data-t="suppliers"')+btn("+ Омборга кирим","move-in","","primary"),
   body:`${filt}<div class="stats">${stat("Жами қарзимиз",short(tot),"барча давр",1)}${stat("Олинган материал",short(del),F.supMonth?monthLabel(F.supMonth):"барча давр")}${stat("Тўланган",short(pd),F.supMonth?monthLabel(F.supMonth):"барча давр")}</div>
   ${S.suppliers.length?table(["Етказиб берувчи","Етказма","Олинган, сўм","Тўланган, сўм","Қарз, сўм (жами)",""],rows.map(r=>r.h),[2,3,4]):`<p class="hint">Етказиб берувчилар омборга кирим ёзилганда ёки Excel юкланганда автоматик пайдо бўлади. Қўлда ҳам қўшиш мумкин.</p>`}
-  <p class="hint" style="margin-top:10px">Қарз = олинган материал суммаси − тўловлар. Нархи киритилмаган етказмалар қарзга қўшилмайди.</p>`};
+`};
 };
 

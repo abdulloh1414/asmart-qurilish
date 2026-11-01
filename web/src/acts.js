@@ -109,7 +109,7 @@ VIEWS.acts=()=>{
   <section class="block"><h2>Справка о выполненных объемах <small><button class="btn sm" data-act="act-print" data-id="sp">Кўриш / чоп этиш</button> <button class="btn sm" data-act="act-xls" data-id="sp">Excel</button></small></h2>${docHtml(A.sp)}</section>
   <section class="block"><h2>Справка-счет-фактура Ф-3 <small><button class="btn sm" data-act="act-print" data-id="f3">Кўриш / чоп этиш</button> <button class="btn sm" data-act="act-xls" data-id="f3">Excel</button></small></h2>${docHtml(A.f3)}</section>
   <section class="block"><h2>Давр бўйича харажат ва фойда <small>ички ҳисоб, ҚҚСсиз</small></h2>${table(["Объект","Заказчикка иш (ҚҚСсиз)","Бригада ҳақи","Сарфланган материал","Бошқа харажат","Фойда"],A.eco.map(e=>tr([`<b>${esc(e.o.name)}</b>`,money(e.net),money(e.lab),money(e.mat),money(e.oth),`<b style="color:var(--${e.profit<0?"bad":"good"})">${e.profit<0?"−":""}${money(Math.abs(e.profit))}</b>`],[1,2,3,4,5])),[1,2,3,4,5],A.eco.length>1?`<tfoot><tr><td>Жами</td><td class="n">${money(sum(A.eco,e=>e.net))}</td><td class="n">${money(sum(A.eco,e=>e.lab))}</td><td class="n">${money(sum(A.eco,e=>e.mat))}</td><td class="n">${money(sum(A.eco,e=>e.oth))}</td><td class="n">${money(sum(A.eco,e=>e.profit))}</td></tr></tfoot>`:"")}
-  <p class="hint">Иш ҳажми «Бажарилган ишлар»дан, материал «Омбор → Чиқим»дан (чиқарилган вақтдаги нарх билан) автоматик олинади.</p></section>
+</section>
   <section class="block"><h2>Заказчиклар ва шартномалар</h2>${table(["Заказчик","Шартнома","Шартнома суммаси, сўм","Раҳбар",""],crows,[2])}</section>`};
 };
 

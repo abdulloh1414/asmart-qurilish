@@ -9,8 +9,9 @@ import "./forms.js";
 import "./importer.js";
 import "./contracts.js";
 import "./acts.js";
+import "./history.js";
 
-const NAV = [["dashboard", "Бошқарув панели"], ["objects", "Объектлар"], ["plan", "Иш режаси"], ["brigades", "Бригадалар"], ["logs", "Бажарилган ишлар"], ["payroll", "Иш ҳақи ҳисоби"], ["stock", "Омбор"], ["suppliers", "Етказиб берувчилар"], ["acts", "Заказчикка ҳисобот"], ["contracts", "Меҳнат шартномалари"], ["cash", "Касса"], ["debts", "Қарз дафтари"], ["reports", "Ҳисоботлар"], ["users", "Фойдаланувчилар"]];
+const NAV = [["dashboard", "Бошқарув панели"], ["objects", "Объектлар"], ["plan", "Иш режаси"], ["brigades", "Бригадалар"], ["logs", "Бажарилган ишлар"], ["payroll", "Иш ҳақи ҳисоби"], ["stock", "Омбор"], ["suppliers", "Етказиб берувчилар"], ["acts", "Заказчикка ҳисобот"], ["contracts", "Меҳнат шартномалари"], ["cash", "Касса"], ["debts", "Қарз дафтари"], ["reports", "Ҳисоботлар"], ["users", "Фойдаланувчилар"], ["history", "Ўзгаришлар тарихи"]];
 
 // Тугма қайси жадвалга ёзишни талаб қилади
 const NEEDS = { "move-in": "moves", "move-out": "moves", advance: "cash", wage: "cash", "sup-pay": "cash", "debt-pay": "debts", "import-xl": "moves", "import-plan": "plan", "seed-works": "works", "user-new": "__owner" };

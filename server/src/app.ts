@@ -109,6 +109,12 @@ export async function buildApp(pool: Pool, opts: { logger?: boolean } = {}) {
     const r = await pool.query('SELECT id,login,name,role,active FROM users ORDER BY created_at');
     return { users: r.rows };
   });
+  app.get('/api/audit', { preHandler: needOwner }, async () => {
+    const r = await pool.query(
+      `SELECT a.id, a.at, a.entity, a.upserts, a.deletes, u.name AS user_name
+         FROM audit a LEFT JOIN users u ON u.id = a.user_id ORDER BY a.id DESC LIMIT 300`);
+    return { rows: r.rows };
+  });
   const userBody = z.object({
     login: z.string().min(3).max(40).regex(/^[a-z0-9._-]+$/i),
     name: z.string().min(1).max(100),

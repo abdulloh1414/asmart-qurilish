@@ -43,7 +43,7 @@ export const ORDER = ENTITIES.map((e) => e.name);
 
 // Rolga ko'ra ko'rinadigan sahifalar
 export const VIEWS_BY_ROLE: Record<Role, string[]> = {
-  owner: ['dashboard', 'objects', 'plan', 'brigades', 'logs', 'payroll', 'stock', 'suppliers', 'acts', 'contracts', 'cash', 'debts', 'reports', 'users'],
+  owner: ['dashboard', 'objects', 'plan', 'brigades', 'logs', 'payroll', 'stock', 'suppliers', 'acts', 'contracts', 'cash', 'debts', 'reports', 'users', 'history'],
   accountant: ['dashboard', 'objects', 'plan', 'brigades', 'logs', 'payroll', 'stock', 'suppliers', 'acts', 'contracts', 'cash', 'debts', 'reports'],
   storekeeper: ['stock', 'suppliers'],
   foreman: ['objects', 'plan', 'logs'],

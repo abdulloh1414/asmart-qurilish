@@ -61,9 +61,7 @@ VIEWS.users = () => {
     `<div class="rowacts"><button class="btn sm ghost" data-uact="edit" data-id="${u.id}">Таҳрир</button><button class="btn sm ghost ${u.active ? "danger" : ""}" data-uact="toggle" data-id="${u.id}">${u.active ? "Ўчириш" : "Қайта фаоллаш"}</button></div>`]));
   return {
     eyebrow: "Тизимга кирадиган ходимлар", title: "Фойдаланувчилар", actions: btn("+ Фойдаланувчи", "user-new", "", "primary"),
-    body: `${users === null ? `<p class="hint">Юкланмоқда…</p>` : table(["Ходим", "Роль", "Ҳолат", ""], rows)}
-    <section class="block"><h2>Роллар</h2>
-    <p class="hint">Эга: ҳамма бўлим ва фойдаланувчилар. Ҳисобчи: ҳамма молиявий бўлим, шартномалар ва ҳисоботлар. Омборчи: омбор ва етказиб берувчилар. Прораб: объектлар, режа ва бажарилган ишлар.</p></section>`,
+    body: `${users === null ? `<p class="hint">Юкланмоқда…</p>` : table(["Ходим", "Роль", "Ҳолат", ""], rows)}`,
   };
 };
 

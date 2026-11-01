@@ -23,5 +23,6 @@ Testlar: `cd server && npm test`.
 2. `cp .env.example .env` va `POSTGRES_PASSWORD`, `ADMIN_*` ni to'ldiring (kuchli parol!).
 3. `docker compose up -d --build` — ilova `127.0.0.1:3010` da ishlaydi.
 4. `deploy/nginx-triumf.conf` ni `/etc/nginx/conf.d/` ga qo'ying, `nginx -t && systemctl reload nginx`, so'ng `certbot --nginx -d <subdomen>`.
-5. Zaxira nusxalar `./backups` ichida (14 kun).
-6. Avtomatik joylash: GitHub Secrets — `SSH_HOST`, `SSH_USER`, `SSH_KEY`, `APP_DIR`.
+5. Yangilash: `bash deploy/update.sh`.
+6. Zaxira nusxalar `./backups` ichida (14 kun).
+7. Avtomatik joylash: GitHub Secrets — `SSH_HOST`, `SSH_USER`, `SSH_KEY`, `APP_DIR`.
